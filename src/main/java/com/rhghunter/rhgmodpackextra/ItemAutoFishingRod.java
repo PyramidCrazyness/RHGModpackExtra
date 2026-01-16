@@ -34,7 +34,7 @@ public class ItemAutoFishingRod extends ItemFishingRod {
             // If we just cast the line (fishEntity exists), turn Auto ON.
             // If we just reeled in (fishEntity is null), turn Auto OFF.
             boolean isFishing = (player.fishEntity != null);
-            stack.getTagCompount().setBoolean("AutoFishActive", isFishing);
+            stack.getTagCompount().setBoolean("AutoFishActive-", isFishing);
 
             if (isFishing) {
                 player.addChatMessage(new ChatComponentText("Auto_Fisher enabled!"));

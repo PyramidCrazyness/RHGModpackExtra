@@ -32,12 +32,23 @@ public class RHGModpackExtra {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
+
         // Item Registery
         autoRod = new ItemAutoFishingRod();
         GameRegistry.registerItem(autoRod, "auto_fishing_rod");
 
-        // Register Evemt Handler
+        // Register Event Handler
         FMLCommonHandler.instance().bus().register(new AutoFishingEventHandler());
+
+        // Initialize Recipes
+        CryoRecipes.init();
+
+        // Register Block
+        BlockCryoFurnace cryoFurnace = new BlockCryoFurnace();
+        GameRegistry.registerBlock(cryoFurnace, "CryoFurnace");
+
+        // Register TileEntity
+        GameRegistry.registerTileEntity(TileCryoFurnace.class, "rhgmodpackextra_cryofurnace");
     }
 
     @Mod.EventHandler
