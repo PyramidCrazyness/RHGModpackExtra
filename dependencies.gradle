@@ -35,4 +35,9 @@
  */
 dependencies {
     //runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.69-GTNH:dev")
+    implementation("curse.maven:mantle-74924:2264244")
+    implementation("curse.maven:tinker-construct-74072:2264246")
+    implementation("curse.maven:cofh-core-69612:2388750")
+    implementation("curse.maven:thermal-foundation-222880:2388752")
+    implementation("curse.maven:thermal-expansion-29163:2388758")
 }

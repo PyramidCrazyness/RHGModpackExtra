@@ -9,6 +9,18 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
+import com.rhghunter.rhgmodpackextra.common.CommonProxy;
+import com.rhghunter.rhgmodpackextra.config.Tags;
+import com.rhghunter.rhgmodpackextra.events.AutoFishingEventHandler;
+import com.rhghunter.rhgmodpackextra.items.ItemAutoFishingRod;
+import com.rhghunter.rhgmodpackextra.recipes.CryoRecipes;
+import com.rhghunter.rhgmodpackextra.tiles.TileCryoFurnace;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 @Mod(modid = RHGModpackExtra.MODID, version = Tags.version, name = "RHG Modpack Extra", acceptedMinecraftVersions = "[1.7.10]")
 public class RHGModpackExtra {
@@ -49,6 +61,32 @@ public class RHGModpackExtra {
 
         // Register TileEntity
         GameRegistry.registerTileEntity(TileCryoFurnace.class, "rhgmodpackextra_cryofurnace");
+
+        // RECIPES
+        ItemStack steelToolRod = GameRegistry.findItemStack("TConstruct", "toolRod");
+
+        if (ticRodItem != null) {
+            ItemStack steelRodStack = new ItemStack(ticRodItem, 1, 16);
+        }
+        GameRegistry.addRecipe(new ItemStack(RHGModpackExtra.autoRod),
+                "  R",
+                " RS",
+                "RTS",
+                'R', steelRodStack,
+                'S', Items.string,
+                'T', Items.redstone_dust
+        );
+
+        GameRegistry.addRecipe(new ItemStack(RHGModpackExtra.cryoFurnace),
+                "IVI",
+                "SFS",
+                "IRI",
+                'I', Items.iron_ingot,
+                'V', Blocks.ice,
+                'S', Items.snowball,
+                'F', Blocks.furnace,
+                'R', Blocks.redstone_block
+        );
     }
 
     @Mod.EventHandler
